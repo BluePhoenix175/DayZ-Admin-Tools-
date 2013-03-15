@@ -67,7 +67,7 @@ hintSilent parseText format ["
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Headshots: </t><t size='1.15' font='Bitstream' align='right'>%3</t><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Humanity: </t><t size='1.15' font='Bitstream' align='right'>%6</t><br/><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Blood: </t><t size='1.15' font='Bitstream' align='right'>%10</t><br/>
-	<t size='1.15' font='Bitstream' color='#5882FA'>North Star Gaming</t><br/>",
+	<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",
 	(name player),
 	(player getVariable['zombieKills', 0]),
 	(player getVariable['headShots', 0]),
