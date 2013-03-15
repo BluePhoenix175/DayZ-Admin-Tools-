@@ -39,7 +39,7 @@ player_chopWood = compile preprocessFileLineNumbers "tweaks\player_chopWood.sqf"
 */
 "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
 playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
-admintools = compile preprocessFileLineNumbers "admintools\toolexec.sqf";
+admintools = compile preprocessFileLineNumbers "admintools\AdminToolsMain.sqf";
 if (isServer) then { 		// If mission is loaded by server execute the server monitor
 	hiveInUse = true;
 	_serverMonitor = [] execVM "\z\addons\dayz_server\system\server_monitor.sqf";
@@ -68,4 +68,4 @@ if (!isDedicated) then {  	// If mission is loaded by a player execute the playe
 [] execVM "R3F_ARTY_AND_LOG\init.sqf";
 [] execVM "DamiMods\refuel\fuelactions.sqf";
 [] execVM "DamiMods\flip\flipaction.sqf";
-//[] execVM "admintools\welcome.sqf";
+[] execVM "admintools\AdminToolsMain.sqf";
