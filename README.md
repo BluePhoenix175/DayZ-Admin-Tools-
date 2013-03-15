@@ -27,7 +27,7 @@ _id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
 and change the playermonitor line to
 _playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
-un pack your dayz_code pbo
+un pack your dayz_code pbo 
 in the system folder delete antihacks.sqf
 copy playermonitor.fsm to your mission folder\admintools
 
@@ -58,3 +58,49 @@ battleye
 i do not know all of the changes that need to be made to scripts.txt yet. 
 when i do i will include copys of the modified scripts.txt in the github
 for now i suggest disabling battleeye
+
+FAQ
+====
+
+
+Q: I teleported and now i cant move
+
+A: press w + space
+
+Q: I executed "script name" and now im stuck, frozen, glitched..ect
+
+A: change skin to survivor, if that does not work relog
+
+Q: I want to modify my debug monitor can you help?
+
+A: no, post here http://opendayz.net/index.php?threads/dayz-duel-admin-debug-monitor.8402/ for help
+
+Q: can you add "script name" to the tools?
+
+A: possibly.
+
+Q: battleye keeps kicking me when i execute a tool.
+
+A: im currently working to find all of the changes that need to be made to scripts.txt. when im done i will include a copy of my modified scripts.txt.
+
+Q:i do not have access to dayz_code.pbo how can i make the required changes?
+
+A: you can not. i am working on a way to bypass this method of disabling the default anti teleport script
+
+Q: i have other mods that also use compiles.sqf what lines does your mod need?
+
+A: these tools require the following lines from compiles.sqf
+
+under _config2 = configFile >> "CfgWeapons" >> "Loot";
+
+add
+
+hotkey_hitme = 0;
+
+locate the block of code that looks like
+
+if (_dikCode in actionKeys "PushToTalk" and (time - dayz_lastCheckBit > 10)) then { dayz_lastCheckBit = time; [player,50,true,(getPosATL player)] spawn player_alertZombies; };
+
+add the following code to that block
+
+if (_dikCode in actionKeys "User20" and hotkey_hitme == 0 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hotkey_hitme = 1; _nill = [] execVM "debug\playerstats.sqf"; }; if (_dikCode in actionKeys "User20" and hotkey_hitme == 1 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hintSilent ""; hotkey_hitme = 0; }; if (_dikCode in actionKeys "User19" and hotkey_tools == 0 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hotkey_tools = 1; _nill = [] execVM "admintools\toolexec.sqf"; }; if (_dikCode in actionKeys "User19" and hotkey_tools == 1 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hintSilent ""; hotkey_tools = 0; };
