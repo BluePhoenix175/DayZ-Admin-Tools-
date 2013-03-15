@@ -7,7 +7,6 @@ if (!isDedicated) then {
 	_config1 = 	configFile >> "CfgMagazines" >> "FoodEdible";
 	_config2 = 	configFile >> "CfgWeapons" >> "Loot";
 	hotkey_hitme = 0;
-	hotkey_tools = 0;
 	"filmic" setToneMappingParams [0.07, 0.31, 0.23, 0.37, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
 
 	BIS_Effects_Burn = 			compile preprocessFile "\ca\Data\ParticleEffects\SCRIPTS\destruction\burn.sqf"; 
@@ -262,7 +261,6 @@ if (!isDedicated) then {
 		if (_dikCode in actionKeys "User20" and hotkey_hitme == 1 and (time - dayz_lastCheckBit > 5)) then {
 			dayz_lastCheckBit = time; hintSilent ""; hotkey_hitme = 0;
 		}; 
-		/*
 		if (_dikCode in actionKeys "User19" and hotkey_tools == 0 and (time - dayz_lastCheckBit > 5)) then {
 			dayz_lastCheckBit = time; hotkey_tools = 1; 
 			_nill = [] execVM "admintools\toolexec.sqf"; 
@@ -270,7 +268,6 @@ if (!isDedicated) then {
 		if (_dikCode in actionKeys "User19" and hotkey_tools == 1 and (time - dayz_lastCheckBit > 5)) then {
 			dayz_lastCheckBit = time; hintSilent ""; hotkey_tools = 0;
 		}; 
-		*/
 		if ((_dikCode == 0x3E or _dikCode == 0x0F or _dikCode == 0xD3) and (time - dayz_lastCheckBit > 10)) then {
 			dayz_lastCheckBit = time;
 			call dayz_forceSave;
