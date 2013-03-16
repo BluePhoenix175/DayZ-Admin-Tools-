@@ -7,6 +7,7 @@ if (!isDedicated) then {
 	_config1 = 	configFile >> "CfgMagazines" >> "FoodEdible";
 	_config2 = 	configFile >> "CfgWeapons" >> "Loot";
 	hotkey_hitme = 0;
+	hotkey_tools = 0;
 	"filmic" setToneMappingParams [0.07, 0.31, 0.23, 0.37, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
 
 	BIS_Effects_Burn = 			compile preprocessFile "\ca\Data\ParticleEffects\SCRIPTS\destruction\burn.sqf"; 

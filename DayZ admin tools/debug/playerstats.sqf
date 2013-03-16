@@ -9,7 +9,7 @@ Change the UID's below to match those of you and your admin(s)
 Your admins will get the advanced version of your debug monitor,
 while your regular users will get the cut down version. 
 */
-hotkey_hitme = 1 //disable if you want to use regular hotkey in compiles
+hotkey_hitme = 1; //disable if you want to use regular hotkey in compiles
 if ((getPlayerUID player) in ["#######","#######"]) then { 	  
 	while {sleep 1;hotkey_hitme == 1} do {
 	  
