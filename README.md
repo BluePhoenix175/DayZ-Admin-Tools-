@@ -55,9 +55,8 @@ if you execute a script and get stuck change skin to suvivor
 
 battleye
 =========
-i do not know all of the changes that need to be made to scripts.txt yet. 
-when i do i will include copys of the modified scripts.txt in the github
-for now i suggest disabling battleeye
+either use the included scripts.txt
+or compare mine with yours and make the required changes
 
 FAQ
 ====
@@ -78,10 +77,6 @@ A: no, post here http://opendayz.net/index.php?threads/dayz-duel-admin-debug-mon
 Q: can you add "script name" to the tools?
 
 A: possibly.
-
-Q: battleye keeps kicking me when i execute a tool.
-
-A: im currently working to find all of the changes that need to be made to scripts.txt. when im done i will include a copy of my modified scripts.txt.
 
 Q:i do not have access to dayz_code.pbo how can i make the required changes?
 
