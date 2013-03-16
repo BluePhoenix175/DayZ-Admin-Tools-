@@ -264,7 +264,7 @@ if (!isDedicated) then {
 		}; 
 		if (_dikCode in actionKeys "User19" and hotkey_tools == 0 and (time - dayz_lastCheckBit > 5)) then {
 			dayz_lastCheckBit = time; hotkey_tools = 1; 
-			_nill = [] execVM "admintools\toolexec.sqf"; 
+			_nill = [] execVM "admintools\AdminToolsMain.sqf";  
 			};
 		if (_dikCode in actionKeys "User19" and hotkey_tools == 1 and (time - dayz_lastCheckBit > 5)) then {
 			dayz_lastCheckBit = time; hintSilent ""; hotkey_tools = 0;
