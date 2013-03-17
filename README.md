@@ -3,7 +3,7 @@ DayZ-Admin-Tools
 this project includes code that i did not wright but have permission to use
 https://github.com/nomadichayward/DayZ_Dual_Admin_Debug_Monitor
 
-Install Instructions
+Install Instructions (chernarus)
 =====================
 make these changes to your init.sqf
 
@@ -27,16 +27,11 @@ _id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
 and change the playermonitor line to
 _playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
-un pack your dayz_code pbo 
-in the system folder delete antihacks.sqf
-copy playermonitor.fsm to your mission folder\admintools
 
-open playermonitor.fsm find and delete
+open playermonitor.fsm in the admintools folder find and delete
 "[] execVM ""\z\addons\dayz_code\system\antihack.sqf"";" \n
 save changes
 
-delete both playermonitor files from dayz_code
-repack and replace dayz_code.pbo
 
 in admintools\AdminToolsMain.sqf and debug\playerstats.sqf
 locate this code
@@ -49,10 +44,55 @@ locate this code and change "Server name here" to what ever you want
 
 once you have all of this done pack and replace your mission.pbo
 in game press escape >>options>>controls>>custom controlls>> set hotkeys for #'s 19 and 20(19 = admin tools, 20 = debug
+your players will need to set #20 to see the debug
 
-alt click on the map to teleport, then press w + space to move after teleport
-if you execute a script and get stuck change skin to suvivor 
+Install Instructions (Taviana)
+=====================
 
+
+find this code in init.sqf
+
+"filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
+
+add this code under it
+
+playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
+AdminToolsMain = compile preprocessFileLineNumbers "admintools\AdminToolsMain.sqf";
+
+find this code in init.sqf
+
+if (!isDedicated) then {
+	0 fadeSound 0;
+	0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED",60];
+	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
+	
+	and change the player monitor line to this
+	
+	_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
+	
+	find this code at the bottom of init.sqf
+	
+	if (!isDedicated) then {
+	
+	and add this line
+	
+	[] execVM "admintools\AdminToolsMain.sqf";
+	
+	locate this code in debug\playerstats.sqf and admintools\admintoolsmain.sqf
+	
+	if ((getPlayerUID player) in ["########","########"]) then {
+	
+	change ###### to your admins player id's
+	
+	in debug\playerstats.sqf
+locate this code and change "Server name here" to what ever you want
+<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",
+
+once you have all of this done pack and replace your mission.pbo
+
+
+in game press escape >>options>>controls>>custom controlls>> set hotkeys for #'s 19 and 20(19 = admin tools, 20 = debug
+your players will need to set #20 to see the debug
 battleye
 =========
 either use the included scripts.txt
