@@ -1,6 +1,6 @@
-_DERPADERPA_dami = (vehicle player);
-removeAllWeapons _DERPADERPA_dami;
-removeAllItems _DERPADERPA_dami;
-removebackpack _DERPADERPA_dami;
+GearRemove = (vehicle player);
+removeAllWeapons GearRemove;
+removeAllItems GearRemove;
+removebackpack GearRemove;
 
 cutText ["Gear deleted!", "PLAIN"];
