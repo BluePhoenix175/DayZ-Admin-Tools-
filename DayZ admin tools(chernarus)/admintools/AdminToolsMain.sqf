@@ -38,6 +38,8 @@ ToolsMenu =
 		["Car God", [4],  "", -5, [["expression", format[EXECscript1,"cargod.sqf"]]], "1", "1"],
 		["Heal Player(s)", [5],  "", -5, [["expression", format[EXECscript1,"healp.sqf"]]], "1", "1"],
 		["Look-N-Repair", [6],  "", -5, [["expression", format[EXECscript1,"looknrepair.sqf"]]], "1", "1"],
+		["Repair Buildings", [7],  "", -5, [["expression", format[EXECscript1,"fixbuildings.sqf"]]], "1", "1"],
+		["Spectate Player", [8],  "", -5, [["expression", format[EXECscript1,"spectate.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
