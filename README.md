@@ -106,6 +106,10 @@ Q: I teleported and now i cant move
 
 A: press w + space
 
+Q: how do i return to my body after spectating a player
+
+A: press F3.
+
 Q: I executed "script name" and now im stuck, frozen, glitched..ect
 
 A: change skin to survivor, if that does not work relog
