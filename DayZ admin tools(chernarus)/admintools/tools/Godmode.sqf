@@ -1,11 +1,11 @@
-if (isNil "damiGODZ") then
+if (isNil "demiGOD") then
 {
-	damiGODZ = 0;
+	demiGOD = 0;
 };
 
-if (damiGODZ == 0) then
+if (demiGOD == 0) then
 {
-	damiGODZ = 1;
+	demiGOD = 1;
     cutText ["Godmode activated. (No Recoil, No Grass, No reload)", "PLAIN"];
 	setterraingrid 50;
 	player setUnitRecoilCoefficient 0;
@@ -15,7 +15,7 @@ if (damiGODZ == 0) then
 	player removeAllEventHandlers "handleDamage";
 	player addEventHandler ["handleDamage", {false}];
 	player allowDamage false;
-	while {damiGODZ == 1} do
+	while {demiGOD == 1} do
 	{
 		vehicle player setVehicleAmmo 1;
 	};
@@ -23,7 +23,7 @@ if (damiGODZ == 0) then
 
 else
 {
-	damiGODZ = 0;
+	demiGOD = 0;
     cutText ["Godmode Deactivated. (No Recoil, No Grass, No reload)", "PLAIN"];
 	setterraingrid 25;
 	player setUnitRecoilCoefficient 1;
