@@ -40,7 +40,7 @@ change ###### to your admins player id's
 
 in debug\playerstats.sqf
 locate this code and change "Server name here" to what ever you want
-<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",
+// <t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>", \\
 
 once you have all of this done pack and replace your mission.pbo
 in game press escape >>options>>controls>>custom controlls>> set hotkeys for #'s 19 and 20(19 = admin tools, 20 = debug
