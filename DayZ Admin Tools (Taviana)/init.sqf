@@ -1,7 +1,7 @@
 startLoadingScreen ["","DayZ_loadingScreen"];
 enableSaving [false, false];
 
-dayZ_instance = 1294;	//The instance
+dayZ_instance = 1;	//The instance
 hiveInUse	=	true;
 initialized = false;
 dayz_previousID = 0;
@@ -68,5 +68,4 @@ if (!isDedicated) then {
 // Extra actions for Taviana:
 if (!isDedicated) then {
 	[] execVM "admintools\AdminToolsMain.sqf";
-	
 };

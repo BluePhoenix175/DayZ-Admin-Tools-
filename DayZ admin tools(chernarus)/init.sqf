@@ -34,7 +34,7 @@ if (!isDedicated) then {  	// If mission is loaded by a player execute the playe
 	0 fadeSound 0;
 	0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED", 60];
 	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
-	_playerMonitor = [] execFSM "fixes\player_monitor.fsm";
+	_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
 };
 [] execVM "admintools\AdminToolsMain.sqf";
