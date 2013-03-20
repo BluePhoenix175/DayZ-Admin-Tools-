@@ -1,18 +1,22 @@
 //Let Zeds know
 [player,4,true,(getPosATL player)] spawn player_alertZombies;
-
-//display gui (temp hint)
-
+if (isnil ("hotkey_hitme")) then {
+    hotkey_hitme = 0;
+};
+if (hotkey_hitme == 1) then {
+hotkey_hitme = 0;
+} else {
+hotkey_hitme = 1;
+};
 
 /*
 Change the UID's below to match those of you and your admin(s)
 Your admins will get the advanced version of your debug monitor,
 while your regular users will get the cut down version. 
 */
-hotkey_hitme = 1; //disable if you want to use regular hotkey in compiles
-if ((getPlayerUID player) in ["########","########"]) then { 	  
+
+if ((getPlayerUID player) in ["######","######"]) then { 	  
 	while {sleep 1;hotkey_hitme == 1} do {
-	  
 	  hintSilent parseText format ["
 	<t size='0.95' font='Bitstream' align='left' >[%18]</t><t size='0.95' font='Bitstream' align='right'>[FPS: %10]</t><br/>
 	<t size='0.95' font='Bitstream' align='center' color='#FFBF00'>Survived %7 Days</t><br/>
@@ -65,6 +69,8 @@ hintSilent parseText format ["
 	<t size='1.15' font='Bitstream' align='center' color='#FFCC00'>Survived %7 Days</t><br/><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Zombies Killed: </t><t size='1.15' font='Bitstream' align='right'>%2</t><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Headshots: </t><t size='1.15' font='Bitstream' align='right'>%3</t><br/>
+	<t size='0.95' font='Bitstream' align='left' color='#FFBF00'>Murders: </t><t size='0.95' font='Bitstream' align='right'>%4</t><br/>
+	<t size='0.95' font='Bitstream' align='left' color='#FFBF00'>Bandits Killed: </t><t size='0.95' font='Bitstream' align='right'>%5</t><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Humanity: </t><t size='1.15' font='Bitstream' align='right'>%6</t><br/><br/>
 	<t size='1.15' font='Bitstream' align='left' color='#FFBF00'>Blood: </t><t size='1.15' font='Bitstream' align='right'>%10</t><br/>
 	<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",

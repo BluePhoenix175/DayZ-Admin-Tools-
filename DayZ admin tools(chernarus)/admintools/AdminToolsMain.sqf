@@ -8,7 +8,7 @@ EXECscript2 = 'player execVM "'+pathtoskins+'%1"';
 EXECscript3 = 'player execVM "'+pathtoweapon+'%1"';
 EXECscript4 = 'player execVM "'+pathtoshields+'%1"';
 execdebug = 'player execVM "'+pathdebug+'%1"';
-if ((getPlayerUID player) in ["#######","#######"]) then {
+if ((getPlayerUID player) in ["######","######"]) then { 
 adminmenu =
 [
 	["",true],
