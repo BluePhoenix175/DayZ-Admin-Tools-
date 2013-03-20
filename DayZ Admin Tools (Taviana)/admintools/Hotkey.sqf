@@ -22,10 +22,10 @@ ActivateHotKey = 1;
 while {EnableHotkey == 1} do {
 	if (ActivateHotKey == 0) then {
 		waituntil {!isnull (finddisplay 46)};
-		(findDisplay 46) displayAddEventHandler ["KeyDown","_this select 1 call KeyCheck;false;"];
+		Hotkeyadd = (findDisplay 46) displayAddEventHandler ["KeyDown","_this select 1 call KeyCheck;false;"];
 		ActivateHotKey = 1;
 	} else {
-		(findDisplay 46) displayRemoveAllEventHandlers "KeyDown";
+		(findDisplay 46) displayRemoveEventHandler ["KeyDown", Hotkeyadd];
 		ActivateHotKey = 0;
 	};
 };
