@@ -47,8 +47,8 @@ esp_ftw_bro =
 		[format["Show nearby zombies: %1",_zombie_R_gay], [6], "", -5, [["expression", "_zombie_R_gay = !_zombie_R_gay;"]], "1", "1"],
 		[format["Show nearby animals: %1",I_fuck_Animals], [7], "", -5, [["expression", "I_fuck_Animals = !I_fuck_Animals;"]], "1", "1"],
 		[format["Show dead bodies: %1",show_dead_lolz], [8], "", -5, [["expression", "show_dead_lolz = !show_dead_lolz;"]], "1", "1"],
-		[format["Use alternative teleport: %1",alternate_tp], [9], "", -5, [["expression", "alternate_tp = !alternate_tp;"]], "1", "1"],
-	];  
+		[format["Use alternative teleport: %1",alternate_tp], [9], "", -5, [["expression", "alternate_tp = !alternate_tp;"]], "1", "1"]
+		];  
 	showCommandingMenu "#USER:wat_is_opt";
 };
 

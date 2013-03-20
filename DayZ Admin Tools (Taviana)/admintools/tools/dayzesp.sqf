@@ -8,7 +8,6 @@ if (isNil "fuck_gps_lol") then {fuck_gps_lol = true;};  	//Move gps and remove i
 if (isNil "simple_car_iconz") then {simple_car_iconz = false;};		//Show "simple" car icon instead default icons
 if (isNil "builtin_tp") then {builtin_tp = true;};		//Use built-in teleport
 if (isNil "alternate_tp") then {alternate_tp = false;};		//Use alternative teleport (could be used to tp on buildings)(not works for vehicles)(credits to monky)
-if (isNil "vilayer_sux_dik") then {vilayer_sux_dik = true;};		//Use bypass of current antiteleport script (ViLayer)
 
 
 _addMAP2DAMI = true;				//Add map on start (GPS or MAP nesessary for functionality)
@@ -48,9 +47,8 @@ esp_ftw_bro =
 		[format["Show nearby zombies: %1",_zombie_R_gay], [6], "", -5, [["expression", "_zombie_R_gay = !_zombie_R_gay;"]], "1", "1"],
 		[format["Show nearby animals: %1",I_fuck_Animals], [7], "", -5, [["expression", "I_fuck_Animals = !I_fuck_Animals;"]], "1", "1"],
 		[format["Show dead bodies: %1",show_dead_lolz], [8], "", -5, [["expression", "show_dead_lolz = !show_dead_lolz;"]], "1", "1"],
-		[format["Use alternative teleport: %1",alternate_tp], [9], "", -5, [["expression", "alternate_tp = !alternate_tp;"]], "1", "1"],
-		[format["Use 'anticheat' bypass: %1",vilayer_sux_dik], [10], "", -5, [["expression", "vilayer_sux_dik = !vilayer_sux_dik;"]], "1", "1"]
-	];  
+		[format["Use alternative teleport: %1",alternate_tp], [9], "", -5, [["expression", "alternate_tp = !alternate_tp;"]], "1", "1"]
+		];  
 	showCommandingMenu "#USER:wat_is_opt";
 };
 
