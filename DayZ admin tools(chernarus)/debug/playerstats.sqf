@@ -1,12 +1,15 @@
 //Let Zeds know
 [player,4,true,(getPosATL player)] spawn player_alertZombies;
+
 if (isnil ("hotkey_hitme")) then {
     hotkey_hitme = 0;
 };
 if (hotkey_hitme == 1) then {
 hotkey_hitme = 0;
+titleText ["Debug Monitor Deactivated","PLAIN DOWN"];titleFadeOut 2;
 } else {
 hotkey_hitme = 1;
+titleText ["Debug Monitor Activated","PLAIN DOWN"];titleFadeOut 2;
 };
 
 /*
