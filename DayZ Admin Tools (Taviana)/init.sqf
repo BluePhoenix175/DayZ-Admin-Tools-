@@ -36,4 +36,8 @@ if (!isDedicated) then {  	// If mission is loaded by a player execute the playe
 	_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
 };
-[] execVM "admintools\Hotkey.sqf";
+if ((getPlayerUID player) in ["######","######"]) then {
+	toolsmenu = player addAction ["Tools Menu", "admintools\AdminToolsMain.sqf"];
+} else {
+	debugmenu = player addAction ["Toggle Debug", "debug\playerstats.sqf"];
+};
