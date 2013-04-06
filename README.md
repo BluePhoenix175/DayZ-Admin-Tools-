@@ -14,7 +14,11 @@ playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
 admintools = compile preprocessFileLineNumbers  "admintools\AdminToolsMain.sqf";
 
 at the bottom of init.sqf add
-[] execVM "admintools\Hotkey.sqf"; 
+if ((getPlayerUID player) in ["######","######"]) then {
+	toolsmenu = player addAction ["Tools Menu", "admintools\AdminToolsMain.sqf"];
+} else {
+	debugmenu = player addAction ["Toggle Debug", "debug\playerstats.sqf"];
+}; 
 
 find this code 
 if (!isDedicated) then { // If mission is loaded by a player execute the player monitor
@@ -26,21 +30,23 @@ and change the playermonitor line to
 _playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
 
-in admintools\AdminToolsMain.sqf and debug\playerstats.sqf
+in init.sqf, admintools\AdminToolsMain.sqf, and debug\playerstats.sqf
 locate this code
  if ((getPlayerUID player) in ["#######","#######"]) then {
 change ###### to your admins player id's
+Profile>>"PlayerName">>Edit, look in the bottom left hand corner for "Player ID" 
+that is the number that needs to be added to the code 
 
 in debug\playerstats.sqf
 locate this code and change "Server name here" to what ever you want
 // <t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>", \\
 
 once you have all of this done pack and replace your mission.pbo
-in game press F5 for debug and F6 for admin tools
+
+if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 
 Install Instructions (Taviana)
 =====================
-
 
 find this code in init.sqf
 
@@ -62,15 +68,15 @@ if (!isDedicated) then {
 	
 	_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 	
-	find this code at the bottom of init.sqf
+	at the bottom of init.sqf add this line
 	
-	if (!isDedicated) then {
+	if ((getPlayerUID player) in ["######","######"]) then {
+	toolsmenu = player addAction ["Tools Menu", "admintools\AdminToolsMain.sqf"];
+} else {
+	debugmenu = player addAction ["Toggle Debug", "debug\playerstats.sqf"];
+}; 
 	
-	and add this line
-	
-	[] execVM "admintools\Hotkey.sqf";
-	
-	locate this code in debug\playerstats.sqf and admintools\admintoolsmain.sqf
+	locate this code in init.sqf, debug\playerstats.sqf, and admintools\admintoolsmain.sqf
 	
 	if ((getPlayerUID player) in ["########","########"]) then {
 	
@@ -80,11 +86,9 @@ if (!isDedicated) then {
 locate this code and change "Server name here" to what ever you want
 <t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",
 
-once you have all of this done pack and replace your mission.pbo
-
 
 once you have all of this done pack and replace your mission.pbo
-in game press F5 for debug and F6 for admin tools
+if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 battleye
 =========
 either use the included scripts.txt
@@ -98,40 +102,26 @@ Q: I teleported and now i cant move
 
 A: press w + space
 
+
 Q: how do i return to my body after spectating a player
 
 A: press F3.
+
 
 Q: I executed "script name" and now im stuck, frozen, glitched..ect
 
 A: change skin to survivor, if that does not work relog
 
+
 Q: I want to modify my debug monitor can you help?
 
 A: no, post here http://opendayz.net/index.php?threads/dayz-duel-admin-debug-monitor.8402/ for help
+
 
 Q: can you add "script name" to the tools?
 
 A: possibly.
 
-Q:i do not have access to dayz_code.pbo how can i make the required changes?
+Q: i followed the readme to the letter but its not working
 
-A: you can not. i am working on a way to bypass this method of disabling the default anti teleport script
-
-Q: i have other mods that also use compiles.sqf what lines does your mod need?
-
-A: these tools require the following lines from compiles.sqf
-
-under _config2 = configFile >> "CfgWeapons" >> "Loot";
-
-add
-
-hotkey_hitme = 0;
-
-locate the block of code that looks like
-
-if (_dikCode in actionKeys "PushToTalk" and (time - dayz_lastCheckBit > 10)) then { dayz_lastCheckBit = time; [player,50,true,(getPosATL player)] spawn player_alertZombies; };
-
-add the following code to that block
-
-if (_dikCode in actionKeys "User20" and hotkey_hitme == 0 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hotkey_hitme = 1; _nill = [] execVM "debug\playerstats.sqf"; }; if (_dikCode in actionKeys "User20" and hotkey_hitme == 1 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hintSilent ""; hotkey_hitme = 0; }; if (_dikCode in actionKeys "User19" and hotkey_tools == 0 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hotkey_tools = 1; _nill = [] execVM "admintools\toolexec.sqf"; }; if (_dikCode in actionKeys "User19" and hotkey_tools == 1 and (time - dayz_lastCheckBit > 5)) then { dayz_lastCheckBit = time; hintSilent ""; hotkey_tools = 0; };
+A: did you set your instance ID # in init.sqf
