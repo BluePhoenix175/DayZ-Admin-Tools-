@@ -14,13 +14,11 @@ playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
 admintools = compile preprocessFileLineNumbers  "admintools\AdminToolsMain.sqf";
 
 at the bottom of init.sqf add
-if ((getPlayerUID player) in ["######","######"]) then {
-	toolsmenu = player addAction ["Tools Menu", "admintools\AdminToolsMain.sqf"];
-} else {
-	debugmenu = player addAction ["Toggle Debug", "debug\playerstats.sqf"];
-}; 
+
+[] execVM "admintools\Activate.sqf";
 
 find this code 
+
 if (!isDedicated) then { // If mission is loaded by a player execute the player monitor
 0 fadeSound 0;
 0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED", 60];
@@ -30,7 +28,7 @@ and change the playermonitor line to
 _playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
 
-in init.sqf, admintools\AdminToolsMain.sqf, and debug\playerstats.sqf
+in admintools\AdminToolsMain.sqf, and debug\playerstats.sqf
 locate this code
  if ((getPlayerUID player) in ["#######","#######"]) then {
 change ###### to your admins player id's
@@ -70,13 +68,9 @@ if (!isDedicated) then {
 	
 	at the bottom of init.sqf add this line
 	
-	if ((getPlayerUID player) in ["######","######"]) then {
-	toolsmenu = player addAction ["Tools Menu", "admintools\AdminToolsMain.sqf"];
-} else {
-	debugmenu = player addAction ["Toggle Debug", "debug\playerstats.sqf"];
-}; 
+	[] execVM "admintools\Activate.sqf";
 	
-	locate this code in init.sqf, debug\playerstats.sqf, and admintools\admintoolsmain.sqf
+	locate this code in debug\playerstats.sqf, and admintools\admintoolsmain.sqf
 	
 	if ((getPlayerUID player) in ["########","########"]) then {
 	
