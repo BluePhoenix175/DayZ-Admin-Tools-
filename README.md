@@ -88,8 +88,78 @@ once you have all of this done pack and replace your mission.pbo
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 battleye
 =========
-either use the included scripts.txt
-or compare mine with yours and make the required changes
+theres are all of the changes that need to be made
+do NOT delete the line only add the exception if you need a exzample please go here
+http://opendayz.net/threads/dayz-admin-tools.8576/page-34#post-33299
+These are all the changes I made in my scripts.txt
+Code:
+----------------------------------------
+script restriction !exception
+----------------------------------------
+//dayzesp.sqf is the only one I went line by line and made all the exact restrictions for
+5 addGroupIcon !"dayzesp.sqf"
+5 setMarkerPosLocal !"dayzesp.sqf"
+5 onMapSingleClick !"dayzesp.sqf"
+5 setPosASL2 !"dayzesp.sqf"
+5 openMap !"dayzesp.sqf"
+5 drawIcon !"dayzesp.sqf"
+
+----------------------------------------
+
+1 addPublicVariableEventHandler !"healp.sqf"
+5 setHit !"healp.sqf"
+1 setVariable !"healp.sqf"
+
+-----------------------------------------
+
+5 setVehicleAmmo !"looknrepair.sqf"
+5 setDamage !"looknrepair.sqf"
+5 setDammage !"looknrepair.sqf"
+
+------------------------------------------
+
+5 "zombieshield" !"zombieshield.sqf"
+
+------------------------------------------
+
+//covers all the weapon switches/backpack changes
+5 addWeapon !"items.sqf"
+5 addWeaponCargo !"items.sqf"
+5 addMagazine !"items.sqf"
+5 addMagazineCargo !"items.sqf"
+5 addBackpack !"items.sqf"
+5 addBackpackCargo !"items.sqf"
+
+--------------------------------------------
+
+1 allowDamage !"Godmode.sqf"
+1 allowDammage !"Godmode.sqf"
+5 setDammage !"Godmode.sqf"
+5 setVehicleAmmo !"Godmode.sqf"
+5 "God mode" !"Godmode.sqf"
+5 GodMode !"Godmode.sqf"
+
+---------------------------------------------
+
+5 setDammage !"cargod.sqf"
+1 setFuel !"cargod.sqf"
+5 setVehicleAmmo !"cargod.sqf"
+5 "God mode" !"cargod.sqf"
+5 GodMode !"cargod.sqf"
+
+---------------------------------------------
+
+Example for some of the lines...
+
+Script Restriction | Exception
+
+5 setMarkerPosLocal !"\"setMarkerPosLocal\"," !"dayzesp.sqf"," !"rsetMarkerPosLocal = 'setMarkerPosLocal'" !"rsetMarkerPosLocalcode = compile PreprocessFile (BIS_PathMPscriptCommands + 'setMarkerPosLocal.sqf')"
+
+
+5 setDammage !"\"setDammage\"," !"looknrepair.sqf"," !"Godmode.sqf"," !"cargod.sqf"
+
+I like to put my exceptions near the beginning rather then the end since I find it easier to find them if I need to later on.
+
 
 FAQ
 ====
