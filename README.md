@@ -11,7 +11,6 @@ under "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 
 add this
 
 playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
-admintools = compile preprocessFileLineNumbers  "admintools\AdminToolsMain.sqf";
 
 at the bottom of init.sqf add
 
@@ -30,13 +29,18 @@ _playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
 in admintools\AdminToolsMain.sqf, and debug\playerstats.sqf
 locate this code
+
  if ((getPlayerUID player) in ["#######","#######"]) then {
+ 
 change ###### to your admins player id's
+
 Profile>>"PlayerName">>Edit, look in the bottom left hand corner for "Player ID" 
 that is the number that needs to be added to the code 
 
 in debug\playerstats.sqf
+
 locate this code and change "Server name here" to what ever you want
+
 // <t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>", \\
 
 once you have all of this done pack and replace your mission.pbo
@@ -53,7 +57,6 @@ find this code in init.sqf
 add this code under it
 
 playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
-AdminToolsMain = compile preprocessFileLineNumbers "admintools\AdminToolsMain.sqf";
 
 find this code in init.sqf
 
