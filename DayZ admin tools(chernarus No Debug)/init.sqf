@@ -22,8 +22,6 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";	
 progressLoadingScreen 1.0;
 
 "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
-playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
-AdminToolsMain = compile preprocessFileLineNumbers "admintools\AdminToolsMain.sqf";
 if (isServer) then { 		// If mission is loaded by server execute the server monitor
 	hiveInUse = true;
 	_serverMonitor = [] execVM "\z\addons\dayz_server\system\server_monitor.sqf";
