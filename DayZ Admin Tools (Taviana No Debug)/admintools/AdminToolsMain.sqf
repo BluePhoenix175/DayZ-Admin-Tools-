@@ -2,12 +2,10 @@ pathtotools = "admintools\tools\";
 pathtoskins = "admintools\skins\";
 pathtoweapon = "admintools\weaponkits\";
 pathtoshields = "admintools\shields\";
-pathdebug = "debug\";
 EXECscript1 = 'player execVM "'+pathtotools+'%1"';
 EXECscript2 = 'player execVM "'+pathtoskins+'%1"';
 EXECscript3 = 'player execVM "'+pathtoweapon+'%1"';
 EXECscript4 = 'player execVM "'+pathtoshields+'%1"';
-execdebug = 'player execVM "'+pathdebug+'%1"';
 if ((getPlayerUID player) in ["######","######"]) then { 
 adminmenu =
 [
