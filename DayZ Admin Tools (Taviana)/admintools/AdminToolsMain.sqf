@@ -85,7 +85,23 @@ WeaponMenu2 =
 		["Coyote", [8],  "", -5, [["expression", format[EXECscript3,"bp1.sqf"]]], "1", "1"],
 		["Delete gear", [9],  "", -5, [["expression", format[EXECscript3,"cleanme.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:WeaponMenu3", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+//extra menu for custom kits remove "//" from lines below to use
+WeaponMenu3 =
+[
+	["",true],
+			//["", [2],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [3],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [4],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [5],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [6],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [7],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [8],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [9],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [-1], "", -5, [["expression", ""]], "1", "0"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 
 ShieldMenu =
