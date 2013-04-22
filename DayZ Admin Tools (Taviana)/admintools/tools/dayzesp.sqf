@@ -115,6 +115,8 @@ else
 
 	sleep 0.1;
 	titleText ["Markers removed...","PLAIN DOWN"];titleFadeOut 2;
+	sleep 5;
+	player addaction [("<t color=""#0074E8"">" + ("Tools Menu") +"</t>"),"admintools\Eexcute.sqf","",5,false,true,"",""];
 };
  
 

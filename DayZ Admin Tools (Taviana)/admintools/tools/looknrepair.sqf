@@ -11,7 +11,7 @@ if (Repair==0) then
 else
 {
     cutText ["LOOK N REPAIR deactivated.", "PLAIN"];
-    dRepair=0;
+    Repair=0;
 };
  
 RepairIT = "while {Repair==1} do{cursorTarget setdammage 0;sleep 0.5;cursorTarget setvehicleammo 1;sleep 0.5;cursorTarget setfuel 1;sleep 0.05;};";

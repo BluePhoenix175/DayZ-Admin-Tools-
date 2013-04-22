@@ -8,8 +8,7 @@ selecteditem = "";
 
 if (isNil "spectate") then {spectate = true;} else {spectate = !spectate;};
 if (spectate) then 
-{
-		 
+{	 
 	{if (_x != player) then {nlist set [count nlist, name _x];};} forEach playableUnits;
 		
 	shnmenu = 
@@ -29,7 +28,6 @@ if (spectate) then
 		WaitUntil {selecteditem!="" or shnext};	
 		shnext = false;
 	};
-
 	
 	if (selecteditem!= "exitscript") then
 	{
@@ -49,7 +47,6 @@ if (spectate) then
 		} forEach playableUnits;
 	};
 	spectate = false;
-	
 };
 if (!spectate) then 
 {	
