@@ -19,8 +19,7 @@ adminmenu =
 		["Vehicle Menu", [6], "#USER:VehicleMenu", -5, [["expression", ""]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 	["Exit", [13], "", -3, [["expression", ""]], "1", "1"]		
-];
-};
+];};
 ToolsMenu =
 [
 	["",true],
