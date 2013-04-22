@@ -1,0 +1,59 @@
+custom weapon kit tutorial
+
+use this format, item class names go inside ' '
+
+GearAdd = (vehicle player);
+GearAdd addWeapon ' '; //main weapon
+GearAdd addMagazine ' '; //main weapon ammo
+GearAdd addMagazine ' '; //main weapon ammo
+GearAdd addMagazine ' '; //main weapon ammo
+GearAdd addMagazine ' '; //main weapon ammo
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addMagazine ' '; // gear (cans of food, ammo, road flares...ect)
+GearAdd addWeapon ' '; //secondary weapon
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addMagazine ' '; //secondary ammo, bandages, 203 ammo
+GearAdd addWeapon ' '; // binoculars
+GearAdd addWeapon ' '; //compas
+GearAdd addWeapon ' '; //map
+GearAdd addWeapon ' '; //watch
+GearAdd addWeapon ' '; //hatchet
+GearAdd addWeapon ' '; //knife
+GearAdd addWeapon ' '; //matches
+GearAdd addWeapon ' '; //E-tool
+GearAdd addWeapon ' '; //toolbox
+GearAdd addBackpack ' '; //backpack
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 4]; //backpack item #of items
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 4]; //backpack item #of items
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 4]; //backpack item #of items
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 4]; //backpack item #of items
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 2]; //backpack item #of items
+(Unitbackpack GearAdd) addMagazineCargoGlobal [' ', 2];
+
+once you have added all of the items you want save as "insertfilenamehere.sqf" open AdminToolsMain.sqf locate
+
+//extra menu for custom kits remove "//" from lines below to use
+WeaponMenu3 =
+[
+	["",true],
+			//["", [2],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [3],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [4],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [5],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [6],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [7],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [8],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [9],  "", -5, [["expression", format[EXECscript3,""]]], "1", "1"],
+			//["", [-1], "", -5, [["expression", ""]], "1", "0"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+
+then just follow the format in WeaponMenu2 to add your custom scripts, only un comment the lines that you plan to use 
