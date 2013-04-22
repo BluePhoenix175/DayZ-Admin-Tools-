@@ -2,11 +2,13 @@ pathtotools = "admintools\tools\";
 pathtoskins = "admintools\skins\";
 pathtoweapon = "admintools\weaponkits\";
 pathtoshields = "admintools\shields\";
+pathtovehicles = "admintools\vehicles\";
 EXECscript1 = 'player execVM "'+pathtotools+'%1"';
 EXECscript2 = 'player execVM "'+pathtoskins+'%1"';
 EXECscript3 = 'player execVM "'+pathtoweapon+'%1"';
 EXECscript4 = 'player execVM "'+pathtoshields+'%1"';
-if ((getPlayerUID player) in ["######","######"]) then { 
+EXECscript5 = 'player execVM "'+pathtovehicles+'%1"';
+if ((getPlayerUID player) in ["######","########"]) then {  
 adminmenu =
 [
 	["",true],
@@ -14,18 +16,12 @@ adminmenu =
 		["Skins Menu", [3], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
 		["Weapon Kits", [4], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
 		["Shields Menu", [5], "#USER:ShieldMenu", -5, [["expression", ""]], "1", "1"],
+		["Vehicle Menu", [6], "#USER:VehicleMenu", -5, [["expression", ""]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 	["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 		
-];} else {
-adminmenu =
-[
-	["",true],
-		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 };
-
 ToolsMenu =
 [
 	["",true],
@@ -36,10 +32,18 @@ ToolsMenu =
 		["Look-N-Repair", [6],  "", -5, [["expression", format[EXECscript1,"looknrepair.sqf"]]], "1", "1"],
 		["Repair Buildings", [7],  "", -5, [["expression", format[EXECscript1,"fixbuildings.sqf"]]], "1", "1"],
 		["Spectate Player", [8],  "", -5, [["expression", format[EXECscript1,"spectate.sqf"]]], "1", "1"],
+		["Teleport To Me", [9], "", -5, [["expression", format[EXECscript1, "TPtoME.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:ToolsMenu2", -5, [["expression", ""]], "1", "1"],
+			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+ToolsMenu2 = 
+[
+["",true],
+		["Flip Vehicle", [2],  "", -5, [["expression", format[EXECscript1,"flipvehicle.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-
 SkinsMenu =
 [
 	["",true],
@@ -106,5 +110,119 @@ ShieldMenu =
 		["Zombie Shield", [2],  "", -5, [["expression", format[EXECscript4,"zombieshield.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu = 
+[
+	["",true],
+		["A10", [2],  "", -5, [["expression", format[EXECscript5,"A10.sqf"]]], "1", "1"],
+		["Little Bird", [3],  "", -5, [["expression", format[EXECscript5,"AH64.sqf"]]], "1", "1"],
+		["an2", [4],  "", -5, [["expression", format[EXECscript5,"an2_prop.sqf"]]], "1", "1"],
+		["Apache", [5],  "", -5, [["expression", format[EXECscript5,"APACHE.sqf"]]], "1", "1"],
+		["MTVR fors", [6],  "", -5, [["expression", format[EXECscript5,"MTVRf.sqf"]]], "1", "1"],
+		["MTVR des", [7],  "", -5, [["expression", format[EXECscript5,"MTVR.sqf"]]], "1", "1"],
+		["ATV", [8],  "", -5, [["expression", format[EXECscript5,"ATV.sqf"]]], "1", "1"],
+		["Bike", [9],  "", -5, [["expression", format[EXECscript5,"Bike.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu2", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu2 =
+[
+["",true],
+		["Bus", [2],  "", -5, [["expression", format[EXECscript5,"bus.sqf"]]], "1", "1"],
+		["C130", [3],  "", -5, [["expression", format[EXECscript5,"C130.sqf"]]], "1", "1"],
+		["Chinook", [4],  "", -5, [["expression", format[EXECscript5,"chinook.sqf"]]], "1", "1"],
+		["F35", [5],  "", -5, [["expression", format[EXECscript5,"F35.sqf"]]], "1", "1"],
+		["Boat 1", [6],  "", -5, [["expression", format[EXECscript5,"FISH.sqf"]]], "1", "1"],
+		["Boat 2", [7],  "", -5, [["expression", format[EXECscript5,"FISH2.sqf"]]], "1", "1"],
+		["Boat 3", [8],  "", -5, [["expression", format[EXECscript5,"FISH3.sqf"]]], "1", "1"],
+		["Gaz", [9],  "", -5, [["expression", format[EXECscript5,"Gaz.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu3", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu3 =
+[
+["",true],
+		["Hatchback", [2],  "", -5, [["expression", format[EXECscript5,"Hatchback.sqf"]]], "1", "1"],
+		["HMMV fors", [3],  "", -5, [["expression", format[EXECscript5,"HMMV.sqf"]]], "1", "1"],
+		["HMMV des", [4],  "", -5, [["expression", format[EXECscript5,"HMMV_Fallu.sqf"]]], "1", "1"],
+		["KA60 Namal", [5],  "", -5, [["expression", format[EXECscript5,"KA60_namalsk.sqf"]]], "1", "1"],
+		["Red Lada", [6],  "", -5, [["expression", format[EXECscript5,"ladared.sqf"]]], "1", "1"],
+		["White Lada", [7],  "", -5, [["expression", format[EXECscript5,"Ladawhite.sqf"]]], "1", "1"],
+		["Little Bird", [8],  "", -5, [["expression", format[EXECscript5,"littleBird.sqf"]]], "1", "1"],
+		["MI17", [9],  "", -5, [["expression", format[EXECscript5,"MI17civ.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu4", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu4 =
+[
+["",true],
+		["MI24", [2],  "", -5, [["expression", format[EXECscript5,"MI24.sqf"]]], "1", "1"],
+		["Mill Offroad", [3],  "", -5, [["expression", format[EXECscript5,"militrayOffroad.sqf"]]], "1", "1"],
+		["UH60", [4],  "", -5, [["expression", format[EXECscript5,"UH60.sqf"]]], "1", "1"],
+		["VW Golf", [5],  "", -5, [["expression", format[EXECscript5,"miniHB.sqf"]]], "1", "1"],
+		["Moto", [6],  "", -5, [["expression", format[EXECscript5,"Moto.sqf"]]], "1", "1"],
+		["Moto 2", [7],  "", -5, [["expression", format[EXECscript5,"Moto2.sqf"]]], "1", "1"],
+		["Moto 3", [8],  "", -5, [["expression", format[EXECscript5,"Moto3.sqf"]]], "1", "1"],
+		["Moto 4", [9],  "", -5, [["expression", format[EXECscript5,"Moto4.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu5", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu5 =
+[
+["",true],
+		["MV22", [2],  "", -5, [["expression", format[EXECscript5,"MV22.sqf"]]], "1", "1"],
+		["Offroad", [3],  "", -5, [["expression", format[EXECscript5,"Offroad.sqf"]]], "1", "1"],
+		["Offroad 2", [4],  "", -5, [["expression", format[EXECscript5,"OFFROAD_d.sqf"]]], "1", "1"],
+		["Offroad 3", [5],  "", -5, [["expression", format[EXECscript5,"OFFROAD_w"]]], "1", "1"],
+		["Red Offroad", [6],  "", -5, [["expression", format[EXECscript5,"offroadRed.sqf"]]], "1", "1"],
+		["Offroad Saffari", [7],  "", -5, [["expression", format[EXECscript5,"offroadSaffari.sqf"]]], "1", "1"],
+		["Offroad Tan", [8],  "", -5, [["expression", format[EXECscript5,"offroadTan.sqf"]]], "1", "1"],
+		["PBX", [9],  "", -5, [["expression", format[EXECscript5,"PBX.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu6", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu6 =
+[
+["",true],
+		["Sedan", [2],  "", -5, [["expression", format[EXECscript5,"sedan.sqf"]]], "1", "1"],
+		["SUV", [3],  "", -5, [["expression", format[EXECscript5,"SUV.sqf"]]], "1", "1"],
+		["MH6J", [4],  "", -5, [["expression", format[EXECscript5,"MH6J.sqf"]]], "1", "1"],
+		["Tank", [5],  "", -5, [["expression", format[EXECscript5,"tank.sqf"]]], "1", "1"],
+		["Tank Fallu", [6],  "", -5, [["expression", format[EXECscript5,"TANKfall.sqf"]]], "1", "1"],
+		["Tank Namal", [7],  "", -5, [["expression", format[EXECscript5,"TANKnam.sqf"]]], "1", "1"],
+		["Taxi", [8],  "", -5, [["expression", format[EXECscript5,"taxi.sqf"]]], "1", "1"],
+		["Tour Car", [9],  "", -5, [["expression", format[EXECscript5,"tourcar.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu7", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu7 =
+[
+["",true],
+		["SU25", [2],  "", -5, [["expression", format[EXECscript5,"SU25.sqf"]]], "1", "1"],
+		["Tractor 2", [3],  "", -5, [["expression", format[EXECscript5,"Tractor.sqf"]]], "1", "1"],
+		["Pickup Tubeframe", [4],  "", -5, [["expression", format[EXECscript5,"tubeframe.sqf"]]], "1", "1"],
+		["UAZ", [5],  "", -5, [["expression", format[EXECscript5,"UAZ.sqf"]]], "1", "1"],
+		["L39", [6],  "", -5, [["expression", format[EXECscript5,"L39.sqf"]]], "1", "1"],
+		["UH1H camo", [7],  "", -5, [["expression", format[EXECscript5,"UH1H_TK.sqf"]]], "1", "1"],
+		["UH1", [8],  "", -5, [["expression", format[EXECscript5,"UH1.sqf"]]], "1", "1"],
+		["Ural", [9],  "", -5, [["expression", format[EXECscript5,"Ural.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+			["Next page", [12], "#USER:VehicleMenu8", -5, [["expression", ""]], "1", "1"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+VehicleMenu8 =
+[
+["",true],	
+		["V3S", [2],  "", -5, [["expression", format[EXECscript5,"V3S.sqf"]]], "1", "1"],
+		["Van 2", [3],  "", -5, [["expression", format[EXECscript5,"Van.sqf"]]], "1", "1"],
+		["F35", [4],  "", -5, [["expression", format[EXECscript5,"F35.sqf"]]], "1", "1"],
+		["", [-1], "", -5, [["expression", ""]], "1", "0"],
+				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 showCommandingMenu "#USER:adminmenu";
