@@ -7,6 +7,7 @@ Install Instructions (chernarus)
 =====================
 make these changes to your init.sqf
 
+(debug version only)
 under "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
 add this
 
@@ -45,7 +46,65 @@ locate this code and change "Server name here" to what ever you want
 
 (End Skip)
 
-once you have all of this done pack and replace your mission.pbo
+in dayz_server.pbo\compile\server_updateObject.sqf find 
+
+//if (!_parachuteWest) then {
+    if (_objectID == "0" && _uid == "0") then
+    {
+        _object_position = getPosATL _object;
+            diag_log(format["Deleting object %1 with invalid ID at pos [%2,%3,%4]",
+            typeOf _object,
+            _object_position select 0,
+            _object_position select 1,
+            _object_position select 2]);
+            _isNotOk = true;
+    };
+};
+ 
+if (_isNotOk) exitWith { deleteVehicle _object; };
+
+and change it to 
+
+//if (!_parachuteWest) then {
+    //if (_objectID == "0" && _uid == "0") then
+    //{
+    //    _object_position = getPosATL _object;
+    //        diag_log(format["Deleting object %1 with invalid ID at pos [%2,%3,%4]",
+        //    typeOf _object,
+        //    _object_position select 0,
+        //    _object_position select 1,
+        //    _object_position select 2]);
+        //    _isNotOk = true;
+    //};
+//};
+ 
+//if (_isNotOk) exitWith { deleteVehicle _object; };
+
+in dayz_server.pbo\system\server_cleanup locate
+
+"//Check for hackers" \n
+" {" \n
+" if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+" diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
+" (vehicle _x) setDamage 0.2;" \n
+" _x setDamage 0.2;" \n
+" };" \n
+" } forEach allUnits;" \n
+"" \n
+
+replace with
+
+"//Check for hackers" \n
+" //{" \n
+" //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+" //diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
+" //(vehicle _x) setDamage 0.2;" \n
+" //_x setDamage 0.2;" \n
+" //};" \n
+" //} forEach allUnits;" \n
+"" \n
+
+once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
 
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 
@@ -83,8 +142,35 @@ locate this code and change "Server name here" to what ever you want
 
 (end skip)
 
-once you have all of this done pack and replace your mission.pbo
+in dayz_server.pbo\system\server_cleanup locate
+
+"//Check for hackers" \n
+" {" \n
+" if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+" diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
+" (vehicle _x) setDamage 0.2;" \n
+" _x setDamage 0.2;" \n
+" };" \n
+" } forEach allUnits;" \n
+"" \n
+
+replace with
+
+"//Check for hackers" \n
+" //{" \n
+" //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+" //diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
+" //(vehicle _x) setDamage 0.2;" \n
+" //_x setDamage 0.2;" \n
+" //};" \n
+" //} forEach allUnits;" \n
+"" \n
+
+once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
+
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
+
+
 battleye
 =========
 provided by inkko
