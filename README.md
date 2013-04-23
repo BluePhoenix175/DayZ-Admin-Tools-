@@ -1,53 +1,46 @@
 DayZ-Admin-Tools
 ================
-this project includes code that i did not wright but have permission to use
-https://github.com/nomadichayward/DayZ_Dual_Admin_Debug_Monitor
+This project includes code that I did not write, but have permission to use<br>
+https://github.com/nomadichayward/dayz_dual_debug_monitor
 
-Install Instructions (chernarus)
-=====================
-make these changes to your init.sqf
+Install Instructions (Chernarus)
+--------------------------------
+Make these changes to your init.sqf
 
-(debug version only)
-under "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
-add this
+(debug version only)<br>
+under<br>
+```"filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";```<br>
+add this<br>
+```playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";```
 
-playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
+At the bottom of init.sqf add<br>
+```[] execVM "admintools\Activate.sqf";```
 
-at the bottom of init.sqf add
-
-[] execVM "admintools\Activate.sqf";
-
-find this code 
-
+Find this code
+<pre>
 if (!isDedicated) then { // If mission is loaded by a player execute the player monitor
-0 fadeSound 0;
-0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED", 60];
-_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
+	0 fadeSound 0;
+	0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED", 60];
+	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
+</pre>
+and change the playermonitor line to<br>
+```_playerMonitor = [] execFSM "admintools\player_monitor.fsm";```
 
-and change the playermonitor line to
-_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
 
+Locate this code in debug\playerstats.sqf(no debug version: Activate.sqf), and admintools\admintoolsmain.sqf
+```if ((getPlayerUID player) in ["#######","#######"]) then {```<br>
+change ###### to your admins player id's<br>
+Profile>>"PlayerName">>Edit, look in the bottom left hand corner for "Player ID"<br>
+that is the number that needs to be added to the code<br>
 
-locate this code in debug\playerstats.sqf(no debug version: Activate.sqf), and admintools\admintoolsmain.sqf
-
- if ((getPlayerUID player) in ["#######","#######"]) then {
- 
-change ###### to your admins player id's
-
-Profile>>"PlayerName">>Edit, look in the bottom left hand corner for "Player ID" 
-that is the number that needs to be added to the code 
-
-(skip if using No Debug version)
-in debug\playerstats.sqf
-
-locate this code and change "Server name here" to what ever you want
-
-<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>", 
-
+(skip if using No Debug version)<br>
+in debug\playerstats.sqf<br>
+locate this code and change "Server name here" to what ever you want<br>
+```<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",```<br>
 (End Skip)
 
-in dayz_server.pbo\compile\server_updateObject.sqf find 
-
+in dayz_server.pbo\compile\server_updateObject.sqf find
+<pre>
 //if (!_parachuteWest) then {
     if (_objectID == "0" && _uid == "0") then
     {
@@ -62,9 +55,9 @@ in dayz_server.pbo\compile\server_updateObject.sqf find
 };
  
 if (_isNotOk) exitWith { deleteVehicle _object; };
-
+</pre>
 and change it to 
-
+<pre>
 //if (!_parachuteWest) then {
     //if (_objectID == "0" && _uid == "0") then
     //{
@@ -79,9 +72,9 @@ and change it to
 //};
  
 //if (_isNotOk) exitWith { deleteVehicle _object; };
-
+</pre>
 in dayz_server.pbo\system\server_cleanup locate
-
+<pre>
 "//Check for hackers" \n
 " {" \n
 " if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
@@ -91,9 +84,9 @@ in dayz_server.pbo\system\server_cleanup locate
 " };" \n
 " } forEach allUnits;" \n
 "" \n
-
+</pre>
 replace with
-
+<pre>
 "//Check for hackers" \n
 " //{" \n
 " //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
@@ -103,47 +96,37 @@ replace with
 " //};" \n
 " //} forEach allUnits;" \n
 "" \n
-
-once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
-
+</pre>
+once you have all of this done pack and replace your mission.pbo and dayz_server.pbo<br>
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 
 Install Instructions (All other Maps)
-=====================
-
-find this code in init.sqf
-
+-------------------------------------
+Find this code in init.sqf
+<pre>
 if (!isDedicated) then {
 	0 fadeSound 0;
 	0 cutText [(localize "STR_AUTHENTICATING"), "BLACK FADED",60];
 	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
+</pre>
+and change the player monitor line to this<br>
+```_playerMonitor = [] execFSM "admintools\player_monitor.fsm";```
 	
-	and change the player monitor line to this
+at the bottom of init.sqf add this line<br>
+```[] execVM "admintools\Activate.sqf";```
 	
-	_playerMonitor = [] execFSM "admintools\player_monitor.fsm";
+locate this code in debug\playerstats.sqf(no debug version: Activate.sqf), and admintools\admintoolsmain.sqf
+```if ((getPlayerUID player) in ["########","########"]) then {```<br>
+change ###### to your admins player id's
 	
-	at the bottom of init.sqf add this line
-	
-	[] execVM "admintools\Activate.sqf";
-	
-	locate this code in debug\playerstats.sqf(no debug version: Activate.sqf), and admintools\admintoolsmain.sqf
-	
-	if ((getPlayerUID player) in ["########","########"]) then {
-	
-	change ###### to your admins player id's
-	
-	(skip if using No Debug version)
-	
-	in debug\playerstats.sqf
-	
-locate this code and change "Server name here" to what ever you want
-
-<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",
-
+(skip if using No Debug version)<br>
+in debug\playerstats.sqf<br>
+locate this code and change "Server name here" to what ever you want<br>
+```<t size='1.15' font='Bitstream' color='#5882FA'>Server name here</t><br/>",```<br>
 (end skip)
 
 in dayz_server.pbo\system\server_cleanup locate
-
+<pre>
 "//Check for hackers" \n
 " {" \n
 " if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
@@ -153,9 +136,9 @@ in dayz_server.pbo\system\server_cleanup locate
 " };" \n
 " } forEach allUnits;" \n
 "" \n
-
+</pre>
 replace with
-
+<pre>
 "//Check for hackers" \n
 " //{" \n
 " //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
@@ -165,18 +148,18 @@ replace with
 " //};" \n
 " //} forEach allUnits;" \n
 "" \n
-
-once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
-
+</pre>
+once you have all of this done pack and replace your mission.pbo and dayz_server.pbo<br>
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
 
 
-battleye
-=========
-provided by inkko
-theres are all of the changes that need to be made
-do NOT delete the line only add the exception if you need a exzample please go here
-http://opendayz.net/threads/dayz-admin-tools.8576/page-34#post-33299
+BattlEye
+--------
+Provided by inkko<br>
+These are all of the changes that need to be made<br>
+Do NOT delete the line, only add the exception<br>
+If you need an example please go here: http://opendayz.net/threads/dayz-admin-tools.8576/page-34#post-33299
+<pre>
 These are all the changes I made in my scripts.txt
 Code:
 ----------------------------------------
@@ -245,36 +228,24 @@ Script Restriction | Exception
 5 setDammage !"\"setDammage\"," !"looknrepair.sqf"," !"Godmode.sqf"," !"cargod.sqf"
 
 I like to put my exceptions near the beginning rather then the end since I find it easier to find them if I need to later on.
-
+</pre>
 
 FAQ
-====
+---
+Q: I teleported and now I can't move<br>
+A: Press w + space
 
+Q: How do i return to my body after spectating a player?<br>
+A: Press F3.
 
-Q: I teleported and now i cant move
+Q: I executed "script name" and now I'm stuck, frozen, glitched..etc<br>
+A: Change skin to survivor, if that does not work relog
 
-A: press w + space
+Q: I want to modify my debug monitor, can you help?<br>
+A: No, post here http://opendayz.net/index.php?threads/dayz-duel-admin-debug-monitor.8402/ for help.
 
+Q: Can you add "script name" to the tools?<br>
+A: Possibly.
 
-Q: how do i return to my body after spectating a player
-
-A: press F3.
-
-
-Q: I executed "script name" and now im stuck, frozen, glitched..ect
-
-A: change skin to survivor, if that does not work relog
-
-
-Q: I want to modify my debug monitor can you help?
-
-A: no, post here http://opendayz.net/index.php?threads/dayz-duel-admin-debug-monitor.8402/ for help
-
-
-Q: can you add "script name" to the tools?
-
-A: possibly.
-
-Q: i followed the readme to the letter but its not working
-
-A: did you set your instance ID # in init.sqf
+Q: I followed the readme to the letter, but it's not working<br>
+A: Did you set your instance ID # in init.sqf?
