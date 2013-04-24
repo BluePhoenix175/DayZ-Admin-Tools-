@@ -1,0 +1,54 @@
+guide to editing admin menus
+
+Main Menu
+i will break this down so you can better understand what your editing
+
+["Tools Menu", [2], "#USER:_Mod_ToolsMenu", -5, [["expression", ""]], "1", "1"],
+
+"Tools menu"  this is the name that you will see
+
+[2] this is the place in the list that the name will appear (do not go past 9)
+
+"#USER:_Mod_ToolsMenu"  sub menu to execute
+
+these are all of the important parts for the main menu
+
+Sub Menus
+again i will break this down so you can better understand what your editing
+
+["ESP / Tele", [2],  "", -5, [["expression", format[_EXECscript1,"dayzesp.sqf"]]], "1", "1"],
+
+"ESP / Tele"  this is the name that you will see
+
+[2] this is the place in the list that the name will appear (start with 2 do not go past 9)
+
+format[_EXECscript1,"dayzesp.sqf"]  path to script
+
+these are all of the important parts for the sub menus
+
+now that you have a better understanding of the code here is a example of a custom menu and sub menu
+
+menu
+["",true],
+                ["Shields Menu", [2], "#USER:_ShieldMenu", -5, [["expression", ""]], "1", "1"],
+                ["Skins Menu", [3], "#USER:_SkinsMenu", -5, [["expression", ""]], "1", "1"],
+                ["Tools Menu", [4], "#USER:_ToolsMenu", -5, [["expression", ""]], "1", "1"],
+                ["Weapon Kits", [5], "#USER:_WeaponMenu", -5, [["expression", ""]], "1", "1"],
+                ["", [-1], "", -5, [["expression", ""]], "1", "0"],
+            ["Exit", [13], "", -3, [["expression", ""]], "1", "1"]       
+        ];
+       
+       
+sub menu
+
+[
+    ["",true],
+        ["Heal Player(s)", [2],  "", -5, [["expression", format[_EXECscript1,"healp.sqf"]]], "1", "1"],
+        ["Look-N-Repair", [3],  "", -5, [["expression", format[_EXECscript1,"looknrepair.sqf"]]], "1", "1"],
+        ["Spectate Player", [4],  "", -5, [["expression", format[_EXECscript1,"spectate.sqf"]]], "1", "1"],
+        ["", [-1], "", -5, [["expression", ""]], "1", "0"],
+            ["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+];
+
+if you compare these to the menus in AdminToolsMain.sqf you should be able to identify what has changed. 
+as long as you maintain the format of the other menus you should not have any problems.
