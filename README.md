@@ -7,11 +7,15 @@ Install Instructions (chernarus)
 =====================
 make these changes to your init.sqf
 
-(debug version only)
+(debug version only)(Skip if using No debug)
+
 under "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
+
 add this
 
 playerstats = compile preprocessFileLineNumbers "debug\playerstats.sqf";
+
+(End Skip)
 
 at the bottom of init.sqf add
 
@@ -46,63 +50,27 @@ locate this code and change "Server name here" to what ever you want
 
 (End Skip)
 
-in dayz_server.pbo\compile\server_updateObject.sqf find 
+if you have Sarge AI skip this (thanks sarge)
 
-//if (!_parachuteWest) then {
-    if (_objectID == "0" && _uid == "0") then
-    {
-        _object_position = getPosATL _object;
-            diag_log(format["Deleting object %1 with invalid ID at pos [%2,%3,%4]",
-            typeOf _object,
-            _object_position select 0,
-            _object_position select 1,
-            _object_position select 2]);
-            _isNotOk = true;
-    };
-};
- 
-if (_isNotOk) exitWith { deleteVehicle _object; };
+Adjust your server_cleanup.fsm file for "Killed a hacker" fix
 
-and change it to 
+Depends which DayZ version you are running.
 
-//if (!_parachuteWest) then {
-    //if (_objectID == "0" && _uid == "0") then
-    //{
-    //    _object_position = getPosATL _object;
-    //        diag_log(format["Deleting object %1 with invalid ID at pos [%2,%3,%4]",
-        //    typeOf _object,
-        //    _object_position select 0,
-        //    _object_position select 1,
-        //    _object_position select 2]);
-        //    _isNotOk = true;
-    //};
-//};
- 
-//if (_isNotOk) exitWith { deleteVehicle _object; };
+The line you are looking for is either:
 
-in dayz_server.pbo\system\server_cleanup locate
+   "    if  (!(vehicle _x in _safety) && ((typeOf vehicle _x) != ""ParachuteWest"") ) then {" \n
 
-"//Check for hackers" \n
-" {" \n
-" if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-" diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
-" (vehicle _x) setDamage 0.2;" \n
-" _x setDamage 0.2;" \n
-" };" \n
-" } forEach allUnits;" \n
-"" \n
+Change to / add as shown:
 
-replace with
+   "    if  (!(vehicle _x in _safety) && ((typeOf vehicle _x) != ""ParachuteWest"") && (vehicle _x getVariable [""Sarge"",0] != 1) ) then {" \n
 
-"//Check for hackers" \n
-" //{" \n
-" //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-" //diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
-" //(vehicle _x) setDamage 0.2;" \n
-" //_x setDamage 0.2;" \n
-" //};" \n
-" //} forEach allUnits;" \n
-"" \n
+Or the line looks like
+
+   if(vehicle _x != _x  && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+
+Change that to
+
+   if(vehicle _x != _x && (vehicle _x getVariable [""Sarge"",0] != 1) && !(vehicle _x in _safety) && (typeOf vehicle _x) != 
 
 once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
 
@@ -142,29 +110,27 @@ locate this code and change "Server name here" to what ever you want
 
 (end skip)
 
-in dayz_server.pbo\system\server_cleanup locate
+if you have Sarge AI skip this (thanks sarge)
 
-"//Check for hackers" \n
-" {" \n
-" if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-" diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
-" (vehicle _x) setDamage 0.2;" \n
-" _x setDamage 0.2;" \n
-" };" \n
-" } forEach allUnits;" \n
-"" \n
+Adjust your server_cleanup.fsm file for "Killed a hacker" fix
 
-replace with
+Depends which DayZ version you are running.
 
-"//Check for hackers" \n
-" //{" \n
-" //if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-" //diag_log (""CLEANUP: KILLING A HACKER "" + (name _x) + "" "" + str(_x) + "" IN "" + (typeOf vehicle _x));" \n
-" //(vehicle _x) setDamage 0.2;" \n
-" //_x setDamage 0.2;" \n
-" //};" \n
-" //} forEach allUnits;" \n
-"" \n
+The line you are looking for is either:
+
+   "    if  (!(vehicle _x in _safety) && ((typeOf vehicle _x) != ""ParachuteWest"") ) then {" \n
+
+Change to / add as shown:
+
+   "    if  (!(vehicle _x in _safety) && ((typeOf vehicle _x) != ""ParachuteWest"") && (vehicle _x getVariable [""Sarge"",0] != 1) ) then {" \n
+
+Or the line looks like
+
+   if(vehicle _x != _x  && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+
+Change that to
+
+   if(vehicle _x != _x && (vehicle _x getVariable [""Sarge"",0] != 1) && !(vehicle _x in _saf
 
 once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
 
