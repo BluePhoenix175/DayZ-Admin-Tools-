@@ -13,48 +13,48 @@ _execdebug = 'player execVM "'+_pathdebug+'%1"';
 //customise these menus to fit your server
 if ((getPlayerUID player) in ["########","########","########","########","########"]) then { //all admins
 	if ((getPlayerUID player) in ["#####"]) then { //mods
-        _adminmenu =
+        adminmenu =
         [
 			["",true],
-				["Tools Menu", [2], "#USER:_Mod_ToolsMenu", -5, [["expression", ""]], "1", "1"],
-				["Skins Menu", [2], "#USER:_SkinsMenu", -5, [["expression", ""]], "1", "1"],
-				["Weapon Kits", [3], "#USER:_WeaponMenu", -5, [["expression", ""]], "1", "1"],
+				["Tools Menu", [2], "#USER:ModToolsMenu", -5, [["expression", ""]], "1", "1"],
+				["Skins Menu", [2], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
+				["Weapon Kits", [3], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
 				["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]	
         ];};
-		if ((getPlayerUID player) in ["######"]) then { //admins
-        _adminmenu =
+	if ((getPlayerUID player) in ["######"]) then { //admins
+        adminmenu =
         [
 			["",true],
-				["Tools Menu", [2], "#USER:_Admin_ToolsMenu", -5, [["expression", ""]], "1", "1"],
-				["Skins Menu", [3], "#USER:_SkinsMenu", -5, [["expression", ""]], "1", "1"],
-				["Weapon Kits", [4], "#USER:_WeaponMenu", -5, [["expression", ""]], "1", "1"],
+				["Tools Menu", [2], "#USER:AdminToolsMenu", -5, [["expression", ""]], "1", "1"],
+				["Skins Menu", [3], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
+				["Weapon Kits", [4], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
 				["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]	
         ];};
-		if ((getPlayerUID player) in ["######"]) then { // super admins
-		_adminmenu =
+	if ((getPlayerUID player) in ["######"]) then { // super admins
+		adminmenu =
 		[
 			["",true],
 				["Toggle Debug", [2], "", -5, [["expression", format[_execdebug,"playerstats.sqf"]]], "1", "1"],
-				["Tools Menu", [3], "#USER:_ToolsMenu", -5, [["expression", ""]], "1", "1"],
-				["Skins Menu", [4], "#USER:_SkinsMenu", -5, [["expression", ""]], "1", "1"],
-				["Weapon Kits", [5], "#USER:_WeaponMenu", -5, [["expression", ""]], "1", "1"],
-				["Shields Menu", [6], "#USER:_ShieldMenu", -5, [["expression", ""]], "1", "1"],
-				["Vehicle Menu", [7], "#USER:_VehicleMenu", -5, [["expression", ""]], "1", "1"],
+				["Tools Menu", [3], "#USER:ToolsMenu", -5, [["expression", ""]], "1", "1"],
+				["Skins Menu", [4], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
+				["Weapon Kits", [5], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
+				["Shields Menu", [6], "#USER:ShieldMenu", -5, [["expression", ""]], "1", "1"],
+				["Vehicle Menu", [7], "#USER:VehicleMenu", -5, [["expression", ""]], "1", "1"],
 				["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]		
 		];};
 } else {
-_adminmenu =
+adminmenu =
 [
 	["",true],
 		["Toggle Debug", [2], "", -5, [["expression", format[_execdebug,"playerstats.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
+	["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];};
 //customise to fit
-_Mod_ToolsMenu =
+ModToolsMenu =
 [
 	["",true],
 		["ESP / Tele", [2],  "", -5, [["expression", format[_EXECscript1,"dayzesp.sqf"]]], "1", "1"],
@@ -66,11 +66,11 @@ _Mod_ToolsMenu =
 		["Spectate Player", [8],  "", -5, [["expression", format[_EXECscript1,"spectate.sqf"]]], "1", "1"],
 		["Teleport To Me", [9], "", -5, [["expression", format[_EXECscript1, "TPtoME.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_ToolsMenu2", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:ToolsMenu2", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 //customise to fit
-_Admin_ToolsMenu =
+AdminToolsMenu =
 [
 	["",true],
 		["ESP / Tele", [2],  "", -5, [["expression", format[_EXECscript1,"dayzesp.sqf"]]], "1", "1"],
@@ -82,10 +82,10 @@ _Admin_ToolsMenu =
 		["Spectate Player", [8],  "", -5, [["expression", format[_EXECscript1,"spectate.sqf"]]], "1", "1"],
 		["Teleport To Me", [9], "", -5, [["expression", format[_EXECscript1, "TPtoME.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_ToolsMenu2", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:ToolsMenu2", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_ToolsMenu =
+ToolsMenu =
 [
 	["",true],
 		["ESP / Tele", [2],  "", -5, [["expression", format[_EXECscript1,"dayzesp.sqf"]]], "1", "1"],
@@ -97,17 +97,17 @@ _ToolsMenu =
 		["Spectate Player", [8],  "", -5, [["expression", format[_EXECscript1,"spectate.sqf"]]], "1", "1"],
 		["Teleport To Me", [9], "", -5, [["expression", format[_EXECscript1, "TPtoME.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_ToolsMenu2", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:ToolsMenu2", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_ToolsMenu2 = 
+ToolsMenu2 = 
 [
 ["",true],
 		["Flip Vehicle", [2],  "", -5, [["expression", format[_EXECscript1,"flipvehicle.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_SkinsMenu =
+SkinsMenu =
 [
 	["",true],
 		["Hero", [2],  "", -5, [["expression", format[_EXECscript2,"Hero.sqf"]]], "1", "1"],
@@ -120,7 +120,7 @@ _SkinsMenu =
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 
-_WeaponMenu =
+WeaponMenu =
 [
 	["",true],
 		["No Weapons", [2],  "", -5, [["expression", format[_EXECscript3,"items.sqf"]]], "1", "1"],
@@ -133,10 +133,10 @@ _WeaponMenu =
 		["Mk 48", [9],  "", -5, [["expression", format[_EXECscript3,"item7.sqf"]]], "1", "1"],
 		["Gold AK", [10],  "", -5, [["expression", format[_EXECscript3,"item8.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_WeaponMenu2", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:WeaponMenu2", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_WeaponMenu2 =
+WeaponMenu2 =
 [
 	["",true],
 		["Aks Kobra", [2],  "", -5, [["expression", format[_EXECscript3,"item9.sqf"]]], "1", "1"],
@@ -148,11 +148,11 @@ _WeaponMenu2 =
 		["Coyote", [8],  "", -5, [["expression", format[_EXECscript3,"bp1.sqf"]]], "1", "1"],
 		["Delete gear", [9],  "", -5, [["expression", format[_EXECscript3,"cleanme.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_WeaponMenu3", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:WeaponMenu3", -5, [["expression", ""]], "1", "1"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 //extra menu for custom kits remove "//" from lines below to use
-_WeaponMenu3 =
+WeaponMenu3 =
 [
 	["",true],
 			//["", [2],  "", -5, [["expression", format[_EXECscript3,""]]], "1", "1"],
@@ -167,14 +167,14 @@ _WeaponMenu3 =
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
 
-_ShieldMenu =
+ShieldMenu =
 [
 	["",true],
 		["Zombie Shield", [2],  "", -5, [["expression", format[_EXECscript4,"zombieshield.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu = 
+VehicleMenu = 
 [
 	["",true],
 		["A10", [2],  "", -5, [["expression", format[_EXECscript5,"A10.sqf"]]], "1", "1"],
@@ -186,10 +186,10 @@ _VehicleMenu =
 		["ATV", [8],  "", -5, [["expression", format[_EXECscript5,"ATV.sqf"]]], "1", "1"],
 		["Bike", [9],  "", -5, [["expression", format[_EXECscript5,"Bike.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu2", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu2", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu2 =
+VehicleMenu2 =
 [
 ["",true],
 		["Bus", [2],  "", -5, [["expression", format[_EXECscript5,"bus.sqf"]]], "1", "1"],
@@ -201,10 +201,10 @@ _VehicleMenu2 =
 		["Boat 3", [8],  "", -5, [["expression", format[_EXECscript5,"FISH3.sqf"]]], "1", "1"],
 		["Gaz", [9],  "", -5, [["expression", format[_EXECscript5,"Gaz.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu3", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu3", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu3 =
+VehicleMenu3 =
 [
 ["",true],
 		["Hatchback", [2],  "", -5, [["expression", format[_EXECscript5,"Hatchback.sqf"]]], "1", "1"],
@@ -216,10 +216,10 @@ _VehicleMenu3 =
 		["Little Bird", [8],  "", -5, [["expression", format[_EXECscript5,"littleBird.sqf"]]], "1", "1"],
 		["MI17", [9],  "", -5, [["expression", format[_EXECscript5,"MI17civ.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu4", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu4", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu4 =
+VehicleMenu4 =
 [
 ["",true],
 		["MI24", [2],  "", -5, [["expression", format[_EXECscript5,"MI24.sqf"]]], "1", "1"],
@@ -231,10 +231,10 @@ _VehicleMenu4 =
 		["Moto 3", [8],  "", -5, [["expression", format[_EXECscript5,"Moto3.sqf"]]], "1", "1"],
 		["Moto 4", [9],  "", -5, [["expression", format[_EXECscript5,"Moto4.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu5", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu5", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu5 =
+VehicleMenu5 =
 [
 ["",true],
 		["MV22", [2],  "", -5, [["expression", format[_EXECscript5,"MV22.sqf"]]], "1", "1"],
@@ -246,10 +246,10 @@ _VehicleMenu5 =
 		["Offroad Tan", [8],  "", -5, [["expression", format[_EXECscript5,"offroadTan.sqf"]]], "1", "1"],
 		["PBX", [9],  "", -5, [["expression", format[_EXECscript5,"PBX.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu6", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu6", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu6 =
+VehicleMenu6 =
 [
 ["",true],
 		["Sedan", [2],  "", -5, [["expression", format[_EXECscript5,"sedan.sqf"]]], "1", "1"],
@@ -261,10 +261,10 @@ _VehicleMenu6 =
 		["Taxi", [8],  "", -5, [["expression", format[_EXECscript5,"taxi.sqf"]]], "1", "1"],
 		["Tour Car", [9],  "", -5, [["expression", format[_EXECscript5,"tourcar.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu7", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu7", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu7 =
+VehicleMenu7 =
 [
 ["",true],
 		["SU25", [2],  "", -5, [["expression", format[_EXECscript5,"SU25.sqf"]]], "1", "1"],
@@ -276,10 +276,10 @@ _VehicleMenu7 =
 		["UH1", [8],  "", -5, [["expression", format[_EXECscript5,"UH1.sqf"]]], "1", "1"],
 		["Ural", [9],  "", -5, [["expression", format[_EXECscript5,"Ural.sqf"]]], "1", "1"],
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
-			["Next page", [12], "#USER:_VehicleMenu8", -5, [["expression", ""]], "1", "1"],
+			["Next page", [12], "#USER:VehicleMenu8", -5, [["expression", ""]], "1", "1"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-_VehicleMenu8 =
+VehicleMenu8 =
 [
 ["",true],	
 		["V3S", [2],  "", -5, [["expression", format[_EXECscript5,"V3S.sqf"]]], "1", "1"],
@@ -288,4 +288,4 @@ _VehicleMenu8 =
 		["", [-1], "", -5, [["expression", ""]], "1", "0"],
 				["Exit", [13], "", -3, [["expression", ""]], "1", "1"]
 ];
-showCommandingMenu "#USER:_adminmenu";
+showCommandingMenu "#USER:adminmenu";
