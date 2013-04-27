@@ -50,9 +50,9 @@ locate this code and change "Server name here" to what ever you want
 
 (End Skip)
 
-if you have Sarge AI skip this (thanks sarge)
 
-Adjust your server_cleanup.fsm file for "Killed a hacker" fix
+
+Adjust your server_cleanup.fsm file for "Killed a hacker" fix (thanks sarge)
 
 Depends which DayZ version you are running.
 
@@ -72,6 +72,31 @@ Change that to
 
    if(vehicle _x != _x && (vehicle _x getVariable [""Sarge"",0] != 1) && !(vehicle _x in _safety) && (typeOf vehicle _x) != 
 
+
+in your server_objectUpdate.sqf (or however it's called in your server package) locate this:  (thanks sarge)
+
+
+if (!_parachuteWest) then {
+    if (_objectID == "0" && _uid == "0") then {
+        _object_position = getPosATL _object;
+        diag_log format ["DEBUG: Deleting object %1 with invalid ID at [%2,%3,%4]", typeOf _object, _object_position select 0, _object_position select 1, _object_position select 2];
+        _isNotOk = true;
+    };
+};
+
+and change to
+
+
+if (!_parachuteWest) then {
+    if (_objectID == "0" && _uid == "0" && (vehicle _object getVariable [""Sarge"",0] != 1)) then {
+        _object_position = getPosATL _object;
+        diag_log format ["DEBUG: Deleting object %1 with invalid ID at [%2,%3,%4]", typeOf _object, _object_position select 0, _object_position select 1, _object_position select 2];
+        _isNotOk = true;
+    };
+};
+
+   
+   
 once you have all of this done pack and replace your mission.pbo and dayz_server.pbo
 
 if your player ID has been added to the correct portions of code a option will be added to the scroll menu
