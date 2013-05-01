@@ -15,8 +15,8 @@ if ((getPlayerUID player) in ["#######","#######"]) then { //all admins
         [
 			["",true],
 				["Tools Menu", [2], "#USER:ModToolsMenu", -5, [["expression", ""]], "1", "1"],
-				["Skins Menu", [2], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
-				["Weapon Kits", [3], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
+				["Skins Menu", [3], "#USER:SkinsMenu", -5, [["expression", ""]], "1", "1"],
+				["Weapon Kits", [4], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
 				["", [-1], "", -5, [["expression", ""]], "1", "0"],
 			["Exit", [13], "", -3, [["expression", ""]], "1", "1"]	
         ];};
